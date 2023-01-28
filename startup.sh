@@ -12,18 +12,14 @@ echo "instcmds = ALL" >> /etc/nut/upsd.users
 
 echo "MONITOR ups@localhost 1 $UPS_USER $UPS_PASSWORD primary" > /etc/nut/upsmon.conf
 
-# Create nut run directory
-mkdir -p /var/run/nut
-mkdir -p /run/nut
-
 # Change perms of nut run dirs
 chown -R nut:nut /run/nut /var/run/nut
 
 # Start the drivers as the nut user
-/usr/sbin/upsdrvctl -u nut start
+/usr/sbin/upsdrvctl start
 
 # Start the UPSD as nut
-/usr/sbin/upsd -u nut
+/usr/sbin/upsd
 
 # start UPSMon
-/usr/sbin/upsmon
+/usr/sbin/upsmon -D
