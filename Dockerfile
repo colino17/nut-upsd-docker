@@ -4,11 +4,8 @@ FROM alpine:latest
 ENV TZ=Canada/Atlantic
 ENV UPS_DRIVER="usbhid-ups"
 ENV UPS_PORT="auto"
-ENV ADMIN_USER="admin"
-ENV ADMIN_PASSWORD="password"
-ENV API_USER="user"
-ENV API_PASSWORD="password"
-ENV SHUTDOWN_CMD="echo 'System shutdown not configured!'"
+ENV UPS_USER="admin"
+ENV UPS_PASSWORD="password"
 
 # NUT PACKAGES
 RUN apk update
@@ -24,7 +21,6 @@ ADD startup.sh /
 
 # PERMISSIONS
 RUN chmod +x /startup.sh
-
 RUN mkdir -p /var/run/nut
 
 # PORTS
