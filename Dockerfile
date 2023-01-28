@@ -2,11 +2,9 @@ FROM alpine:latest
 
 # ENVIRONMENT
 ENV TZ=Canada/Atlantic
-ENV UPS_NAME="ups"
-ENV UPS_DESC="UPS"
 ENV UPS_DRIVER="usbhid-ups"
 ENV UPS_PORT="auto"
-ENV ADMIN_USER="user"
+ENV ADMIN_USER="admin"
 ENV ADMIN_PASSWORD="password"
 ENV API_USER="user"
 ENV API_PASSWORD="password"
