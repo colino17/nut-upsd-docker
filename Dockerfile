@@ -6,9 +6,10 @@ ENV UPS_NAME="ups"
 ENV UPS_DESC="UPS"
 ENV UPS_DRIVER="usbhid-ups"
 ENV UPS_PORT="auto"
-ENV UPS_USER="user"
-ENV UPS_PASSWORD="password"
-ENV ADMIN_PASSWORD=""
+ENV ADMIN_USER="user"
+ENV ADMIN_PASSWORD="password"
+ENV API_USER="user"
+ENV API_PASSWORD="password"
 ENV SHUTDOWN_CMD="echo 'System shutdown not configured!'"
 
 # NUT PACKAGES
