@@ -1,11 +1,14 @@
 #!/bin/sh
 
+# SETUP DEVICE AND DRIVER
 echo "[ups]" > /etc/nut/ups.conf
 echo "driver = $UPS_DRIVER" >> /etc/nut/ups.conf
 echo "port = $UPS_PORT" >> /etc/nut/ups.conf
 
+# ALLOW API ACCESS
 echo "LISTEN 0.0.0.0 3493" > /etc/nut/upsd.conf
 
+# SETUP USERS
 echo "[$ADMIN_USER]" > /etc/nut/upsd.users
 echo "password = $ADMIN_PASSWORD" >> /etc/nut/upsd.users
 echo "actions = set" >> /etc/nut/upsd.users
@@ -16,16 +19,17 @@ echo "[$API_USER]" >> /etc/nut/upsd.users
 echo "password = $API_PASSWORD" >> /etc/nut/upsd.users
 echo upsmon master
 
+# SETUP MONITORING
 echo "MONITOR ups@localhost 1 $API_USER $API_PASSWORD master" > /etc/nut/upsmon.conf
 
-# Change perms of nut run dirs
+# FIX PERMISSIONS
 chown -R nut:nut /dev/bus/usb /var/run/nut
 
-# Start the drivers as the nut user
+# START DRIVER
 upsdrvctl -u nut start
 
-# Start the UPSD as nut
+# START SERVER
 upsd -u nut
 
-# start UPSMon
+# START MONITOR
 upsmon -D
