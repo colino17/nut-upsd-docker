@@ -25,9 +25,7 @@ ADD startup.sh /
 # PERMISSIONS
 RUN chmod +x /startup.sh
 
-RUN mkdir -p /var/run/nut && \
-    chown nut:nut /var/run/nut && \
-    chmod 700 /var/run/nut
+RUN mkdir -p /var/run/nut
 
 # PORTS
 EXPOSE 3493
