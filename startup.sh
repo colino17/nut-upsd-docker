@@ -1,7 +1,5 @@
 #!/bin/sh
 
-mkdir -p /var/run/nut
-
 echo "[ups]" > /etc/nut/ups.conf
 echo "driver = $UPS_DRIVER" >> /etc/nut/ups.conf
 echo "port = $UPS_PORT" >> /etc/nut/ups.conf
@@ -14,12 +12,18 @@ echo "instcmds = ALL" >> /etc/nut/upsd.users
 
 echo "MONITOR ups@localhost 1 $UPS_USER $UPS_PASSWORD primary" > /etc/nut/upsmon.conf
 
-echo 0 > /var/run/nut/upsd.pid && chown nut:nut /var/run/nut/upsd.pid
-echo 0 > /var/run/upsmon.pid
+# Create nut run directory
+mkdir -p /var/run/nut
+mkdir -p /run/nut
 
-chgrp -R nut /etc/nut /dev/bus/usb /var/run/nut
-chmod -R o-rwx /etc/nut 
+# Change perms of nut run dirs
+chown -R nut:nut /run/nut /var/run/nut
 
-upsdrvctl start
-upsd
-upsmon -D
+# Start the drivers as the nut user
+/usr/sbin/upsdrvctl -u nut start
+
+# Start the UPSD as nut
+/usr/sbin/upsd -u nut
+
+# start UPSMon
+/usr/sbin/upsmon
