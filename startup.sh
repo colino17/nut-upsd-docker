@@ -1,9 +1,11 @@
 #!/bin/sh
 
 # SETUP DEVICE AND DRIVER
-echo "[ups]" > /etc/nut/ups.conf
+echo "maxretry = 5" > /etc/nut/ups.conf
+echo "[ups]" >> /etc/nut/ups.conf
 echo "driver = $UPS_DRIVER" >> /etc/nut/ups.conf
 echo "port = $UPS_PORT" >> /etc/nut/ups.conf
+echo "pollinterval = 15" >> /etc/nut/ups.conf
 
 # ALLOW API ACCESS
 echo "LISTEN 0.0.0.0 3493" > /etc/nut/upsd.conf
