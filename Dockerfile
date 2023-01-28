@@ -29,5 +29,7 @@ RUN chmod +x /startup.sh
 # PORTS
 EXPOSE 3493
 
+WORKDIR /var/run/nut
+
 # COMMAND
 ENTRYPOINT ["./startup.sh"]
