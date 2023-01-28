@@ -1,5 +1,7 @@
 #!/bin/sh
 
+mkdir -p /var/run/nut
+
 echo "[ups]" > /etc/nut/ups.conf
 echo "driver = $UPS_DRIVER" >> /etc/nut/ups.conf
 echo "port = $UPS_PORT" >> /etc/nut/ups.conf
