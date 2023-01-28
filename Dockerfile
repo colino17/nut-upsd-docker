@@ -26,6 +26,8 @@ ADD startup.sh /
 # PERMISSIONS
 RUN chmod +x /startup.sh
 
+RUN sed -i 's/MODE=none/MODE=netserver/' /etc/nut/nut.conf
+
 # PORTS
 EXPOSE 3493
 
