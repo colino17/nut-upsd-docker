@@ -12,4 +12,6 @@ echo "instcmds = ALL" >> /etc/nut/upsd.users
 
 echo "MONITOR ups@localhost 1 $UPS_USER $UPS_PASSWORD primary" > /etc/nut/upsmon.conf
 
-ping 8.8.8.8
+upsdrvctl start
+upsd
+upsmon -D
