@@ -14,6 +14,9 @@ echo "instcmds = ALL" >> /etc/nut/upsd.users
 
 echo "MONITOR ups@localhost 1 $UPS_USER $UPS_PASSWORD primary" > /etc/nut/upsmon.conf
 
+chgrp -R nut /etc/nut /dev/bus/usb
+chmod -R o-rwx /etc/nut
+
 upsdrvctl start
 upsd
 upsmon -D
