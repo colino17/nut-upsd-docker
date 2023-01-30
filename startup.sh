@@ -8,8 +8,9 @@ echo "port = $UPS_PORT" >> /etc/nut/ups.conf
 echo "pollinterval = 15" >> /etc/nut/ups.conf
 
 # ALLOW API ACCESS
-echo "LISTEN 0.0.0.0 3493" > /etc/nut/upsd.conf
-echo "MAXAGE 25" > /etc/nut/upsd.conf
+echo "LISTEN 127.0.0.1" > /etc/nut/upsd.conf
+echo "LISTEN $REMOTE_IP" >> /etc/nut/upsd.conf
+echo "MAXAGE 25" >> /etc/nut/upsd.conf
 
 # SETUP USERS
 echo "[local]" > /etc/nut/upsd.users
@@ -22,7 +23,6 @@ echo "" >> /etc/nut/upsd.users
 echo "[$UPS_USER]" >> /etc/nut/upsd.users
 echo "password = $UPS_PASSWORD" >> /etc/nut/upsd.users
 echo "upsmon secondary" >> /etc/nut/upsd.users
-
 
 # SETUP MONITORING
 echo "MONITOR ups@localhost 1 local local primary" > /etc/nut/upsmon.conf
