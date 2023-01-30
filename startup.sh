@@ -8,7 +8,7 @@ echo "port = $UPS_PORT" >> /etc/nut/ups.conf
 echo "pollinterval = 15" >> /etc/nut/ups.conf
 
 # ALLOW API ACCESS
-echo "LISTEN localhost 3493" > /etc/nut/upsd.conf
+echo "LISTEN 127.0.0.1 3493" > /etc/nut/upsd.conf
 echo "LISTEN $REMOTE_IP 3493" >> /etc/nut/upsd.conf
 echo "MAXAGE 25" >> /etc/nut/upsd.conf
 
@@ -29,6 +29,8 @@ echo "MONITOR ups@localhost 1 $UPS_USER $UPS_PASSWORD primary" > /etc/nut/upsmon
 
 # FIX PERMISSIONS
 chown -R nut:nut /dev/bus/usb /var/run/nut
+
+sleep 40
 
 # START DRIVER
 upsdrvctl -u nut start
