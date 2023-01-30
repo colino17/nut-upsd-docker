@@ -8,8 +8,8 @@ echo "port = $UPS_PORT" >> /etc/nut/ups.conf
 echo "pollinterval = 15" >> /etc/nut/ups.conf
 
 # ALLOW API ACCESS
-echo "LISTEN 127.0.0.1" > /etc/nut/upsd.conf
-echo "LISTEN $REMOTE_IP" >> /etc/nut/upsd.conf
+echo "LISTEN localhost 3493" > /etc/nut/upsd.conf
+echo "LISTEN $REMOTE_IP 3493" >> /etc/nut/upsd.conf
 echo "MAXAGE 25" >> /etc/nut/upsd.conf
 
 # SETUP USERS
