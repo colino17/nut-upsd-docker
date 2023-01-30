@@ -29,6 +29,3 @@ upsdrvctl -u nut start
 
 # START SERVER
 upsd -u nut
-
-# START MONITOR
-upsmon -D
