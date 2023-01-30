@@ -6,6 +6,7 @@ ENV UPS_DRIVER="usbhid-ups"
 ENV UPS_PORT="auto"
 ENV UPS_USER="admin"
 ENV UPS_PASSWORD="password"
+ENV REMOTE_IP=127.0.0.1
 
 # NUT PACKAGES
 RUN apk update
