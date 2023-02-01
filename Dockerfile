@@ -24,7 +24,7 @@ RUN chmod +x /startup.sh
 RUN mkdir -p /var/run/nut
 
 # HEALTHCHECK
-HEALTHCHECK --interval 25s --timeout=5s --retries=5 \
+HEALTHCHECK --interval=25s --timeout=5s --retries=5 \
   CMD upsc ups > /dev/stdout 2> /dev/null | grep ups || killall -9 upsmon
 
 # PORTS
