@@ -10,7 +10,7 @@ services:
   ups:
     image: ghcr.io/colino17/nutupsd-docker:latest
     container_name: ups
-    restart: unless-stopped
+    restart: always
     devices:
       - /dev/bus/usb/busnumber:/dev/bus/usb/busnumber
     environment:
@@ -19,7 +19,6 @@ services:
       - UPS_PORT="auto"
       - UPS_USER="admin"
       - UPS_PASSWORD="password"
-      - REMOTE_IP=127.0.0.1
     ports:
       - 3493:3493
 ```
